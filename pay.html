@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>P2 Ruben</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Alata|Lato&display=swap" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+</head>
+
+<body>
+    <div id="header">
+        <a href="home.html">
+            <img src="images/logo.png">
+        </a>
+        <a href="home.html">
+            <h1>Jump the Fun</h1>
+        </a>
+
+        <div>
+            <div class="input-container" onclick="document.getElementById('id01').style.display='block'">
+                <button id="log_button">LOGIN</button>
+            </div>
+
+            <div class="input-container">
+                <i class='fas fa-search' style='font-size:25px'></i>
+                <input type="text">
+            </div>
+
+        </div>
+
+        <!------------------------ NAVBAR ------------------------>
+        <div id="topnav">
+            <a href="home.html">Home</a>
+            <a href="#calendar">Calendar</a>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="myDropdown()">Events
+                    <i class="fa fa-caret-right"></i>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">1st Event</a>
+                    <a href="#">2nd Event</a>
+                    <a href="#">3rd Event</a>
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myNavbar()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a href="#" class="navbar_log" onclick="document.getElementById('id01').style.display='block'">Login</a>
+            <a href="#" class="navbar_log">Search</a>
+        </div>
+    </div>
+
+    <!--################################ MAIN CONTENT ##########################################-->
+
+    <div id="content">
+        <div id="pay">
+            <h1>Marketing Talk</h1>
+            <div id="location">
+                <h3><i class="fa fa-map-marker-alt" style="font-size:24px"></i> Calle Garriga 3</h3>
+            </div>
+            <div id="price">
+                <p>PRECIO TOTAL</p>
+                <p>7,50€</p>
+            </div>
+            <div id="ccards">
+                <div class="ccard" id="visa"></div>
+                <div class="ccard" id="mastercard"></div>
+                <div class="ccard" id="paypal"></div>
+            </div>
+            <div id="info">
+                <p style="background: #FF9E00;">27/7/2019</p>
+                <p style="background: #157CFF;">16:00</p>
+                <p style="background: #FF9E00;">Rated: G</p>
+            </div>
+
+            <p>Duration: 120 minutes</p>
+        </div>
+    </div>
+
+
+    <!--################################ FOOTER START ##########################################-->
+
+    <div id="footer">
+        <p>JumptheFun&copy</p>
+
+        <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Cookies</a></li>
+        </ul>
+
+        <div id="icons">
+            <a href="https://www.youtube.com/?hl=es&gl=ES">
+                <div id="youtube" class="social"></div>
+            </a>
+            <a href="https://es-es.facebook.com/">
+                <div id="facebook" class="social"></div>
+            </a>
+            <a href="https://www.instagram.com/?hl=es">
+                <div id="instagram" class="social"></div>
+            </a>
+            <a href="https://twitter.com/?lang=es">
+                <div id="twitter" class="social"></div>
+            </a>
+        </div>
+
+    </div>
+
+    <!--################################ FOOTER END ##########################################-->
+
+    <!------------------------ OVERLAY ------------------------>
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="/action_page.php" method="post">
+
+            <div class="container" style="text-align: center;">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button id="loginbtn" type="submit">Login</button>
+
+            </div>
+
+            <div class="container">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                <span class="psw"><a href="#">Forgot password?</a></span>
+            </div>
+        </form>
+    </div>
+
+    <!-------------------------- COOKIES -------------------------->
+
+    <div class="cookies" style="display: none;">
+        <div class="cookies_content">
+            <h1>Cookies</h1>
+            <p>We use cookies to understand how you use our site and to improve your experience. This includes
+                personalizing content and advertising.</p>
+            <button onclick="myCookies(1)">Accept</button>
+            <button onclick="myCookies(0)">Decline</button>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        //------------------------ OVERLAY ------------------------//
+
+        var modal = document.getElementById("id01");
+
+        //Cerramos los elementos al hacer clic fuera de ellos
+        window.onclick = function (event) {
+
+            //OVERLAY
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+
+            //DROPDOWN
+            if (!event.target.matches('.dropbtn')) {
+                var myDropdown = document.getElementById("myDropdown");
+                if (myDropdown.classList.contains('show')) {
+                    myDropdown.classList.remove('show');
+                }
+            }
+        }
+
+
+        //------------------------ NAVBAR ------------------------//
+
+        function myNavbar() {
+            var x = document.getElementById("topnav");
+            if (x.className === "") {
+                x.className = "responsive";
+            } else {
+                x.className = "";
+            }
+        }
+
+        function myDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        //------------------------ COOKIES ------------------------//
+
+        function myCookies(x) {
+            if (x == 1) {
+                document.getElementsByClassName("cookies_content")[0].classList.add("closing");
+                setTimeout(function () {
+                    document.getElementsByClassName("cookies")[0].style.display = "none";
+                }, 300)
+            } else {
+                window.close();
+            }
+
+        }
+    </script>
+</body>
+
+</html>
